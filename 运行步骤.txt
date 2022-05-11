@@ -1,0 +1,22 @@
+1、首先要在pycharm上创建一个虚拟环境比如叫djangopy，具体步骤请百度：
+
+数据库使用的是mysql，安装和使用请百度
+
+然后要先创建好两个数据库，db_b的数据库是用来存储用户的注册和登录信息的，
+db_a是用来存储用户操作的信息的，比如使用什么算法。
+
+2、在该环境下安装当前目录下的requirements.txt
+
+pip install -r requirements.txt
+
+3、用pycharm打开fgsmWeb文件夹，并且设置编译器为上面安装的虚拟环境。
+
+4、在fgsmWeb目录下使用虚拟环境的python在anaconda prompt直接运行python manage.py makemigrations
+
+再运行python manage.py --database=db_a
+
+再运行python manage.py --database=db_b
+
+再运行python manage.py runserver
+
+在网址http://127.0.0.1:8000/login/就可以看到网页，然后开始操作了
