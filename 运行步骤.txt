@@ -13,9 +13,9 @@ pip install -r requirements.txt
 
 4、在fgsmWeb目录下使用虚拟环境的python在anaconda prompt直接运行python manage.py makemigrations
 
-再运行python manage.py --database=db_a
+再运行python manage.py migrate --database=db_a
 
-再运行python manage.py --database=db_b
+再运行python manage.py migrate --database=db_b
 
 再运行python manage.py runserver
 
