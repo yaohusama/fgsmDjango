@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>上传文件</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<script type="text/javascript"src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/static/css/mystyle.css">
+<div class="container">
+    <div class="row" >
+        <div class="col-md-12 ">
+            <h1 >对抗样本生成系统</h1>
+        </div>
+    </div>
+   <div class="row">
+       <form enctype="multipart/form-data" action="/uploadfile/" method="post" >
+
+        {% csrf_token %}
+           <div class="col-md-6 ">
+            <input type="file" name="newfile" class="btn btn-default btn-lg">
+           </div>
+           <div class="col-md-6 ">
+            <input type="submit" value="上传文件" class="btn btn-default btn-lg">
+           </div>
+        </form>
+   </div>
+<div class="row">
+    <div class="col-md-12 ">
+        <br/>
+        <h2>对抗算法选择</h2>
+    </div>
+</div>
+   <div class="row">
+
+       <div class="col-md-6 ">
+        <button id="fgsm" class="btn btn-default btn-lg">
+            FGSM
+        </button>
+       </div>
+       <div class="col-md-6 ">
+           <button id ="jsma" class="btn btn-default btn-lg">
+            JSMA
+           </button>
+       </div>
+
+   </div>
+<div class="row">
+    <div class="col-md-12  ">
+        <br/>
+        <h2>下载文件和结果展示</h2>
+    </div>
+</div>
+
+
+<div class="row">
+   <div class="col-md-6 ">
+        <a href="{% url 'download' %}" rel="external nofollow" class="btn btn-default btn-lg">
+        单击下载文件
+        </a>
+       </br>
+   </div>
+    <div class="col-md-6 ">
+        <button class="btn btn-default"><a href="{% url 'login' %}">返回</a>
+        </button>
+
+        <div id="name" style="display:none">{{name}}</div>
+        <div id="password" style="display:none">{{password}}</div>
+    </div>
+
+
+    <div class="row">
+   {% load static %}
+        <div class="col-md-12 ">
+            <img id="imageShow" src="/static/image/default.jpg" width="200" height="200" />
+        </div>
+        </br>
+    </div>
+</div>
+
+<script>
+      $(document).ready(function(){
+        var name1=document.getElementById("name").innerText;
+          var password1=document.getElementById("password").innerText;
+          console.log(name1);
+          console.log(password1);
+$("#jsma").click(function(){
+
+
+            $.ajax({
+                url: "/jsma/",
+                method: "POST",
+                type:"post",
+                contentType: 'application/json',
+                data: JSON.stringify({'name':name1,'password':password1}),
+                processData: false,
+                cache: false,
+
+                success: function(data){
+                    console.log(data);
+                    var imgPre=document.getElementById("imageShow");
+                    imgPre.src=data;
+                }
+            });
+        });
+        $("#fgsm").click(function(){
+            $.ajax({
+                url: "/fgsm/",
+                method: "POST",
+                type:"post",
+                contentType: 'application/json',
+                data: JSON.stringify({'name':name1,'password':password1}),
+                processData: false,
+                cache: false,
+                success: function(data){
+                    console.log(data);
+                    var imgPre=document.getElementById("imageShow");
+                    imgPre.src=data;
+                }
+            });
+        });
+
+    });
+
+    </script>
+</body>
+</html>

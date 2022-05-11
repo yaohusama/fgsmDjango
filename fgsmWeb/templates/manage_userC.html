@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>manage_user</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .c1 {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row" style="margin-top: 50px">
+        <div class="col-md-10 col-md-offset-1">
+<!--            <a href="/register/" class="btn btn-success" style="margin-right: 75px">添加</a>-->
+            <h2 class="text-center c1">用户管理</h2>
+            <a href="/login/" class="btn btn-danger" style="margin-left: 650px">返回登录</a></td>
+            <a href="/file/" class="btn btn-success">进入系统</a></td>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">id</th>
+                        <th class="text-center">name</th>
+                        <th class="text-center">password</th>
+                        <th class="text-center">fileName</th>
+                        <th class="text-center">algorithm</th>
+                        <th class="text-center">createTime</th>
+                        <th class="text-center">operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for userc_obj in user_list %}
+                        <tr class="text-center">
+                            <td>{{userc_obj.id}}</td>
+                            <td>{{userc_obj.name}}</td>
+                            <td>{{userc_obj.password}}</td>
+                            <td>{{userc_obj.fileName}}</td>
+                            <td>{{userc_obj.algorithm}}</td>
+                            <td>{{userc_obj.CreateTime}}</td>
+                            <td><a href="/edit_userC/?user_id={{ userc_obj.id }}" class="btn btn-primary">编辑</a>
+                            <a href="/delete_userC/?user_id={{ userc_obj.id }}" class="btn btn-danger">删除</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

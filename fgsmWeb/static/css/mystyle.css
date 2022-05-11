@@ -1,0 +1,40 @@
+body {
+  background:rgba(193,210,240,0.5) ;
+  /*//url("../image/background.jpg")*/
+  background-size: cover;
+  overflow: hidden;
+  opacity:0.9;
+}
+button,a,img{
+  margin:20px;
+}
+
+h1 {
+  background: #2B6695;
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+  color: #FFFFFF;
+  font-family:"微软雅黑", "宋体", "黑体", Arial;
+  font-size: 38px;
+  font-weight: bold;
+  height: 50px;
+  line-height: 40px;
+  margin: 18px 0 !important;
+  padding: 8px 0 5px 5px;
+  text-shadow: 2px 2px 3px #222222;
+}
+
+h2 {
+  background: #2B6600;
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+  color: #FFFFFF;
+  font-family:"微软雅黑", "宋体", "黑体", Arial;
+  font-size: 25px;
+  font-weight: bold;
+  height: 35px;
+  line-height: 34px;
+  margin: 12px 0 !important;
+  padding: 5px 0 5px 10px;
+  text-shadow: 2px 2px 3px #222222;
+}
